@@ -1,4 +1,22 @@
 {
+  "name": "@designliquido/delegua-yaml",
+  "version": "0.0.0",
+  "description": "Biblioteca para conversão de dicionários Delégua em representação YAML e vice-versa.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesignLiquido/delegua-yaml.git"
+  },
+  "keywords": [
+    "delegua",
+    "yaml"
+  ],
+  "author": "Leonel Sanches da Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DesignLiquido/delegua-yaml/issues"
+  },
   "scripts": {
     "testes-unitarios": "yarn jest --coverage"
   },
