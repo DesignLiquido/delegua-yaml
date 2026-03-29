@@ -1,6 +1,6 @@
 {
   "name": "@designliquido/delegua-yaml",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Biblioteca para conversão de dicionários Delégua em representação YAML e vice-versa.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
     "testes-unitarios": "yarn jest --coverage"
   },
   "dependencies": {
-    "@designliquido/delegua": "^1.15.3",
+    "@designliquido/delegua": "^1.15.4",
     "yaml": "^2.6.1"
   },
   "devDependencies": {
