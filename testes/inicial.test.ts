@@ -1,5 +1,5 @@
 import { VariavelInterface } from '@designliquido/delegua';
-import { yamlParaDicionario, objetoDeleguaParaYaml } from '../index';
+import { yamlParaDicionario, objetoDeleguaParaYaml } from '../fontes';
 
 describe('Testes', () => {
     describe('Conversão de YAML para objetos Delégua', () => {
@@ -17,14 +17,23 @@ describe('Testes', () => {
     });
 
     describe('Conversão de objetos Delégua para YAML', () => {
-        it('Trivial', () => {
+        it('Trivial, estrito (formatação)', () => {
             const resultado = objetoDeleguaParaYaml(['teste', '123', '456']);
             expect(resultado).toBeTruthy();
             const linhas = resultado.split('\n');
             expect(linhas).toHaveLength(4);
-            expect(linhas[0]).toBe('- teste');
-            expect(linhas[1]).toBe('- "123"');
-            expect(linhas[2]).toBe('- "456"');
+            expect(linhas[0]).toBe("- 'teste'");
+            expect(linhas[1]).toBe("- '123'");
+            expect(linhas[2]).toBe("- '456'");
+        });
+
+        it('Trivial, tolerante (semântica)', () => {
+            const entrada = ['teste', '123', '456'];
+            const resultado = objetoDeleguaParaYaml(entrada);
+            expect(resultado).toBeTruthy();
+
+            const parseado = yamlParaDicionario(resultado);
+            expect(parseado).toStrictEqual(entrada);
         });
 
         it('Dicionário Delégua, um nível', () => {
