@@ -11,6 +11,8 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "moduleResolution": "node",
+        "ignoreDeprecations": "6.0",
+        "types": ["jest", "node"],
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true
     },
