@@ -1,10 +1,11 @@
 import { VariavelInterface } from '@designliquido/delegua';
+import { describe, expect, it } from '@jest/globals';
 import { yamlParaDicionario, objetoDeleguaParaYaml } from '../fontes';
 
 describe('Testes', () => {
     describe('Conversão de YAML para objetos Delégua', () => {
         it('Trivial, objeto tradicional em JS (dicionário em Delégua)', () => {
-            const resultado = yamlParaDicionario(
+            const resultado = yamlParaDicionario(undefined, 
                 'openapi: 3.0.0\n' +
                 'servers:\n' +
                 "  - url: 'https://api.designliquido.com.br'"
@@ -18,7 +19,7 @@ describe('Testes', () => {
 
     describe('Conversão de objetos Delégua para YAML', () => {
         it('Trivial, estrito (formatação)', () => {
-            const resultado = objetoDeleguaParaYaml(['teste', '123', '456']);
+            const resultado = objetoDeleguaParaYaml(undefined, ['teste', '123', '456']);
             expect(resultado).toBeTruthy();
             const linhas = resultado.split('\n');
             expect(linhas).toHaveLength(4);
@@ -29,10 +30,10 @@ describe('Testes', () => {
 
         it('Trivial, tolerante (semântica)', () => {
             const entrada = ['teste', '123', '456'];
-            const resultado = objetoDeleguaParaYaml(entrada);
+            const resultado = objetoDeleguaParaYaml(undefined, entrada);
             expect(resultado).toBeTruthy();
 
-            const parseado = yamlParaDicionario(resultado);
+            const parseado = yamlParaDicionario(undefined, resultado);
             expect(parseado).toStrictEqual(entrada);
         });
 
@@ -43,7 +44,7 @@ describe('Testes', () => {
                 valor: { a: 1, b: 2 }
             };
 
-            const resultado = objetoDeleguaParaYaml(dicionarioDelegua);
+            const resultado = objetoDeleguaParaYaml(undefined, dicionarioDelegua);
             expect(resultado).toBeTruthy();
             const linhas = resultado.split('\n');
             expect(linhas).toHaveLength(3);
@@ -58,7 +59,7 @@ describe('Testes', () => {
                 valor: { openapi: '3.0.0', servers: [{url: 'https://api.designliquido.com.br'}] }
             };
 
-            const resultado = objetoDeleguaParaYaml(dicionarioDelegua);
+            const resultado = objetoDeleguaParaYaml(undefined, dicionarioDelegua);
             expect(resultado).toBeTruthy();
             const linhas = resultado.split('\n');
             expect(linhas).toHaveLength(4);

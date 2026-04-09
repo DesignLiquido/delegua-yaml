@@ -1,14 +1,14 @@
 import { VariavelInterface } from '@designliquido/delegua';
 import { CreateNodeOptions, DocumentOptions, parse, ParseOptions, SchemaOptions, stringify, ToStringOptions } from 'yaml';
 
-export function yamlParaDicionario(conteudoYaml: string) {
+export function yamlParaDicionario(_: any, conteudoYaml: string) {
     const resultadoObjeto = parse(
         conteudoYaml
     );
     return resultadoObjeto;
 }
 
-export function objetoDeleguaParaYaml(objetoDelegua: any) {
+export function objetoDeleguaParaYaml(_: any, objetoDelegua: any) {
     // Se tem `tipo`, muito provavelmente é literal ou variável.
     const opcoes: DocumentOptions & SchemaOptions & ParseOptions & CreateNodeOptions & ToStringOptions = {
         toStringDefaults: {
